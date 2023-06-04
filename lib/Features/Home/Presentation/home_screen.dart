@@ -11,20 +11,19 @@ import 'package:distech_technology/Features/SoldTicket/Presentation/sold_ticket_
 import 'package:distech_technology/Features/Support/Presentation/support_screen.dart';
 import 'package:distech_technology/Utils/app_helper.dart';
 import 'package:distech_technology/Widgets/custom_app_bar.dart';
-import 'package:distech_technology/Widgets/custom_card.dart';
 import 'package:distech_technology/Widgets/custom_shape_clipper.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import '../../../Commons/app_images.dart';
 import '../../../Widgets/full_button.dart';
-import '../Components/drawer_items.dart';
 import '../Components/timer_card_widget.dart';
 import '../Models/drawer_item_model.dart';
 import '../Widgets/drawer_item.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  final String username;
+
+  const HomeScreen({Key? key, required this.username}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -275,7 +274,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Expanded(
                       child: Text(
-                        'Hi, Shuvra Paul',
+                        'Hi, ${widget.username}',
                         textAlign: TextAlign.center,
                         style: Theme.of(context)
                             .textTheme

@@ -10,12 +10,16 @@ class CustomTextField extends StatelessWidget {
   final String? errorText;
   final int? minLines;
   final int? maxLines;
+  final int? maxLength;
+  final double? textSize;
   final bool? readOnly;
   final bool? autoFocus;
+  final FocusNode? focusNode;
   final bool? isBorder;
   final bool? obscureText;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
+  final TextAlign? textAlign;
   final TextInputType? keyboardType;
   final String? Function(String?)? validator;
   final String? Function(String?)? onChanged;
@@ -26,8 +30,9 @@ class CustomTextField extends StatelessWidget {
     this.hintText = '',
     this.labelText = '',
     this.errorText,
-    this.minLines,
-    this.maxLines,
+    this.minLines = 1,
+    this.maxLines = 1,
+    this.maxLength,
     this.validator,
     this.readOnly,
     this.keyboardType,
@@ -37,6 +42,9 @@ class CustomTextField extends StatelessWidget {
     this.autoFocus = false,
     this.isBorder = true,
     this.prefixIcon,
+    this.textAlign = TextAlign.start,
+    this.textSize,
+    this.focusNode,
   }) : super(key: key);
 
   @override
@@ -62,18 +70,24 @@ class CustomTextField extends StatelessWidget {
             autovalidateMode: AutovalidateMode.onUserInteraction,
             readOnly: readOnly ?? false,
             validator: validator,
+            focusNode: focusNode,
             obscureText: obscureText ?? false,
-            minLines: minLines ?? 1,
-            maxLines: maxLines ?? 1,
+            minLines: minLines!,
+            maxLines: maxLines!,
+            maxLength: maxLength ?? 500,
             keyboardType: keyboardType ?? TextInputType.text,
             cursorColor: AppColors.primary,
             controller: controller,
             onChanged: onChanged,
             autofocus: autoFocus!,
+            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                fontSize: textSize ?? 16.0, fontWeight: FontWeight.w400),
+            textAlign: textAlign!,
             decoration: isBorder!
                 ? InputDecoration(
                     suffixIcon: suffixIcon,
                     prefixIcon: prefixIcon,
+                    counterText: '',
                     contentPadding:
                         const EdgeInsets.all(AppSizes.kDefaultPadding),
                     enabledBorder: const UnderlineInputBorder(
@@ -90,6 +104,7 @@ class CustomTextField extends StatelessWidget {
                     suffixIcon: suffixIcon,
                     prefixIcon: prefixIcon,
                     border: InputBorder.none,
+                    counterText: '',
                     contentPadding:
                         const EdgeInsets.all(AppSizes.kDefaultPadding),
                     hintText: hintText!,

@@ -77,7 +77,7 @@ class WelcomeScreen extends StatelessWidget {
                 horizontal: AppSizes.kDefaultPadding),
             child: FullButton(
               label: 'Portal Login',
-              onPressed: () => context.pushReplacement(const HomeScreen()),
+              onPressed: () => context.pushReplacement(const LoginScreen()),
             ),
           ),
           const Spacer(),
