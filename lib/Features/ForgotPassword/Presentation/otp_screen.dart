@@ -1,3 +1,4 @@
+import 'package:distech_technology/Features/ForgotPassword/Presentation/reset_password.dart';
 import 'package:distech_technology/Features/Home/Presentation/home_screen.dart';
 import 'package:distech_technology/Utils/app_helper.dart';
 import 'package:distech_technology/Widgets/custom_text_field.dart';
@@ -171,7 +172,9 @@ class _OtpScreenState extends State<OtpScreen> {
             const SizedBox(
               height: AppSizes.kDefaultPadding * 2,
             ),
-            FullButton(label: 'Continue', onPressed: () {}),
+            FullButton(label: 'Continue', onPressed: () {
+              context.pushReplacement(const ResetPasswordScreen());
+            }),
             const SizedBox(
               height: AppSizes.kDefaultPadding * 2,
             ),

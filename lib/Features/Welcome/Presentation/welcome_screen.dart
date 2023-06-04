@@ -77,6 +77,7 @@ class WelcomeScreen extends StatelessWidget {
                 horizontal: AppSizes.kDefaultPadding),
             child: FullButton(
               label: 'Portal Login',
+              arrowIconVisible: true,
               onPressed: () => context.pushReplacement(const LoginScreen()),
             ),
           ),
