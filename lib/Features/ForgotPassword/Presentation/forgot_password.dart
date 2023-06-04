@@ -68,7 +68,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           'Enter your register mobile number for the verification process. We will send 4 digt code',
                           style: Theme.of(context)
                               .textTheme
-                              .bodyLarge!
+                              .bodyMedium!
                               .copyWith(
                                   color: AppColors.darkGrey.withOpacity(0.8),
                                   letterSpacing: 0.5)),

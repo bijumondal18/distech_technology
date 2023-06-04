@@ -83,11 +83,11 @@ class _OtpScreenState extends State<OtpScreen> {
             ),
             Text(
                 'Enter 4 digit code that you received on your registered mobile number',
-                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     color: AppColors.darkGrey.withOpacity(0.8),
                     letterSpacing: 0.5)),
             const SizedBox(
-              height: AppSizes.kDefaultPadding,
+              height: AppSizes.kDefaultPadding * 2,
             ),
             Row(
               children: [
@@ -108,7 +108,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         textAlign: TextAlign.center,
                         controller: _otp1Controller)),
                 const SizedBox(
-                  width: AppSizes.kDefaultPadding,
+                  width: AppSizes.kDefaultPadding * 2,
                 ),
                 Expanded(
                     flex: 1,
@@ -128,7 +128,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         keyboardType: TextInputType.number,
                         controller: _otp2Controller)),
                 const SizedBox(
-                  width: AppSizes.kDefaultPadding,
+                  width: AppSizes.kDefaultPadding * 2,
                 ),
                 Expanded(
                     flex: 1,
@@ -148,7 +148,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         keyboardType: TextInputType.number,
                         controller: _otp3Controller)),
                 const SizedBox(
-                  width: AppSizes.kDefaultPadding,
+                  width: AppSizes.kDefaultPadding * 2,
                 ),
                 Expanded(
                     flex: 1,
@@ -172,9 +172,11 @@ class _OtpScreenState extends State<OtpScreen> {
             const SizedBox(
               height: AppSizes.kDefaultPadding * 2,
             ),
-            FullButton(label: 'Continue', onPressed: () {
-              context.pushReplacement(const ResetPasswordScreen());
-            }),
+            FullButton(
+                label: 'Continue',
+                onPressed: () {
+                  context.pushReplacement(const ResetPasswordScreen());
+                }),
             const SizedBox(
               height: AppSizes.kDefaultPadding * 2,
             ),
