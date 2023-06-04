@@ -8,6 +8,7 @@ import '../../../Commons/app_sizes.dart';
 import '../../../Widgets/custom_divider.dart';
 import '../../SoldTicket/Models/ticket_item_model.dart';
 import '../../SoldTicket/Widgets/ticket_list_item.dart';
+import '../../../Utils/app_helper.dart';
 
 class PurchaseHistoryScreen extends StatefulWidget {
   const PurchaseHistoryScreen({Key? key}) : super(key: key);
@@ -19,6 +20,22 @@ class PurchaseHistoryScreen extends StatefulWidget {
 class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
   //Variable Declarations
   final TextEditingController _searchController = TextEditingController();
+  DateTime selectedDate = DateTime.now();
+
+  // Open date picker dialog and select date from calender view
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(2015, 8),
+      lastDate: DateTime.now(),
+    );
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,18 +85,23 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                   ),
                   Expanded(
                     flex: 1,
-                    child: Container(
-                      padding:
-                          const EdgeInsets.all(AppSizes.kDefaultPadding / 1.5),
-                      height: AppSizes.buttonHeight + 4,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                              AppSizes.cardCornerRadius / 2),
-                          border: Border.all(color: AppColors.bg)),
-                      child: Image.asset(
-                        AppIcons.calenderIcon,
-                        width: 25,
-                        height: 25,
+                    child: InkWell(
+                      onTap: () {
+                        _selectDate(context);
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(
+                            AppSizes.kDefaultPadding / 1.5),
+                        height: AppSizes.buttonHeight + 4,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                                AppSizes.cardCornerRadius / 2),
+                            border: Border.all(color: AppColors.bg)),
+                        child: Image.asset(
+                          AppIcons.calenderIcon,
+                          width: 25,
+                          height: 25,
+                        ),
                       ),
                     ),
                   )
@@ -89,7 +111,7 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                 height: AppSizes.kDefaultPadding * 1.2,
               ),
               Text(
-                'Purchase History on 15/09/2025',
+                'Purchase History on ${AppHelper.formatDate(selectedDate.toLocal())}',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               const SizedBox(
@@ -132,8 +154,8 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                                       .textTheme
                                       .bodyMedium!
                                       .copyWith(
-                                          color:
-                                              AppColors.darkGrey.withOpacity(0.8),
+                                          color: AppColors.darkGrey
+                                              .withOpacity(0.8),
                                           fontWeight: FontWeight.w500),
                                 )),
                             Expanded(
@@ -145,8 +167,8 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                                       .textTheme
                                       .bodyMedium!
                                       .copyWith(
-                                          color:
-                                              AppColors.darkGrey.withOpacity(0.8),
+                                          color: AppColors.darkGrey
+                                              .withOpacity(0.8),
                                           fontWeight: FontWeight.w500),
                                 )),
                           ],
@@ -161,8 +183,8 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                           child: RawScrollbar(
                             thumbColor: AppColors.primary,
                             thickness: 3,
-                            radius:
-                                const Radius.circular(AppSizes.cardCornerRadius),
+                            radius: const Radius.circular(
+                                AppSizes.cardCornerRadius),
                             child: ListView.builder(
                                 padding: EdgeInsets.zero,
                                 physics: const BouncingScrollPhysics(),

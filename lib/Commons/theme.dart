@@ -14,6 +14,7 @@ class AppTheme {
       cardColor: AppColors.white,
       primaryColor: AppColors.primary,
       hintColor: AppColors.darkGrey,
+      unselectedWidgetColor: AppColors.grey,
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
           elevation: 5, backgroundColor: AppColors.primary),
       appBarTheme: const AppBarTheme(
@@ -34,6 +35,7 @@ class AppTheme {
       progressIndicatorTheme: const ProgressIndicatorThemeData(
           color: AppColors.lightGrey, circularTrackColor: AppColors.bg),
       checkboxTheme: CheckboxThemeData(
+          side: const BorderSide(width: 1, color: AppColors.grey),
           // To Make checkbox rounded or circle
           shape: RoundedRectangleBorder(
               borderRadius:

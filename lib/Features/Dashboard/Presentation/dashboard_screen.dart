@@ -22,6 +22,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   final TextEditingController _searchController = TextEditingController();
   bool isSelected = false;
 
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -60,6 +61,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         color: AppColors.primary,
                         size: 20,
                       ),
+                      onChanged: (String? value){
+
+                      },
                       maxLines: 1,
                       minLines: 1,
                       isBorder: false,

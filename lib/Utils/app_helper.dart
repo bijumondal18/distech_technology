@@ -12,6 +12,11 @@ class AppHelper {
     }
     return 'Good Evening';
   }
+
+  static String formatDate(DateTime date) {
+    final formatter = DateFormat('dd/MM/yyyy');
+    return formatter.format(date);
+  }
 }
 
 extension ExtString on String {
