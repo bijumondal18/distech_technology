@@ -1,30 +1,22 @@
 class TicketItemModel {
-  final String slNo;
-  final String ticketNo;
-  final String sem;
+  final String? slNo;
+  final String? ticketNo;
+  final String? sem;
 
-  TicketItemModel(this.slNo, this.ticketNo, this.sem);
+  TicketItemModel({this.slNo, this.ticketNo, this.sem});
 }
 
-final List<TicketItemModel> ticketItemList = [
-  TicketItemModel('01', 'AA 485758', '05'),
-  TicketItemModel('02', 'PL 482548', '10'),
-  TicketItemModel('03', 'SO 254856', '20'),
-  TicketItemModel('04', 'ZD 365895', '50'),
-  TicketItemModel('05', 'BG 754824', '100'),
-  TicketItemModel('06', 'QW 125758', '200'),
-  TicketItemModel('07', 'IO 657548', '500'),
-  TicketItemModel('08', 'SJ 485758', '10'),
-  TicketItemModel('09', 'CR 425475', '20'),
-  TicketItemModel('10', 'AG 426455', '25'),
-  TicketItemModel('11', 'AA 485758', '05'),
-  TicketItemModel('12', 'PL 482548', '10'),
-  TicketItemModel('13', 'SO 254856', '20'),
-  TicketItemModel('14', 'ZD 365895', '50'),
-  TicketItemModel('15', 'BG 754824', '100'),
-  TicketItemModel('16', 'QW 125758', '200'),
-  TicketItemModel('17', 'IO 657548', '500'),
-  TicketItemModel('18', 'SJ 485758', '10'),
-  TicketItemModel('19', 'CR 425475', '20'),
-  TicketItemModel('20', 'AG 426455', '25'),
+List<TicketItemModel> ticketItemList = [
+  TicketItemModel(slNo: '01', ticketNo: 'AA 485758', sem: '05'),
+  TicketItemModel(slNo: '02', ticketNo: 'PL 482548', sem: '10'),
+  TicketItemModel(slNo: '03', ticketNo: 'SO 254856', sem: '20'),
+  TicketItemModel(slNo: '04', ticketNo: 'ZD 365895', sem: '50'),
+  TicketItemModel(slNo: '05', ticketNo: 'AA 485758', sem: '100'),
+  TicketItemModel(slNo: '06', ticketNo: 'SJ 485758', sem: '200'),
+  TicketItemModel(slNo: '07', ticketNo: 'AA 485758', sem: '500'),
+  TicketItemModel(slNo: '08', ticketNo: 'PL 482548', sem: '200'),
+  TicketItemModel(slNo: '09', ticketNo: 'SO 254856', sem: '100'),
+  TicketItemModel(slNo: '10', ticketNo: 'ZD 365895', sem: '100'),
+  TicketItemModel(slNo: '11', ticketNo: 'AA 485758', sem: '20'),
+  TicketItemModel(slNo: '12', ticketNo: 'SJ 485758', sem: '10'),
 ];

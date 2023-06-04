@@ -37,6 +37,24 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
     }
   }
 
+  List<TicketItemModel> searchedList = [];
+
+  // Filter List by SEM or Search list by SEM
+  void filterSearch(String query) {
+    setState(() {
+      searchedList = ticketItemList
+          .where((element) =>
+              element.sem.toString().contains(query.toLowerCase().toString()))
+          .toList();
+    });
+  }
+
+  @override
+  void initState() {
+    searchedList = ticketItemList;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -75,6 +93,9 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                         color: AppColors.primary,
                         size: 20,
                       ),
+                      onChanged: (String? value) {
+                        filterSearch(value!);
+                      },
                       maxLines: 1,
                       minLines: 1,
                       isBorder: false,
@@ -189,10 +210,10 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                                 padding: EdgeInsets.zero,
                                 physics: const BouncingScrollPhysics(),
                                 shrinkWrap: true,
-                                itemCount: ticketItemList.length - 17,
+                                itemCount: searchedList.length,
                                 itemBuilder: ((context, index) {
                                   return TicketListItem(
-                                      ticketItemModel: ticketItemList[index],
+                                      ticketItemModel: searchedList[index],
                                       itemIndex: index);
                                 })),
                           ))

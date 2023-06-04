@@ -98,14 +98,14 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (context) {
           return AlertDialog(
             title: Text(
-              'Close Application?',
+              'Exit Application ?',
               style: Theme.of(context)
                   .textTheme
                   .headlineMedium!
                   .copyWith(fontWeight: FontWeight.w500),
             ),
             content: Text(
-              'Are you sure you want to close the application?',
+              'Are you sure you want to exit from the application ?',
               style: Theme.of(context)
                   .textTheme
                   .bodyLarge!

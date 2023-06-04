@@ -26,7 +26,7 @@ class TicketListItem extends StatelessWidget {
             Expanded(
               flex: 2,
               child: Text(
-                ticketItemModel.slNo,
+                ticketItemModel.slNo.toString(),
                 textAlign: TextAlign.start,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
@@ -34,14 +34,14 @@ class TicketListItem extends StatelessWidget {
             Expanded(
                 flex: 3,
                 child: Text(
-                  ticketItemModel.ticketNo,
+                  ticketItemModel.ticketNo.toString(),
                   textAlign: TextAlign.start,
                   style: Theme.of(context).textTheme.bodyMedium,
                 )),
             Expanded(
                 flex: 2,
                 child: Text(
-                  ticketItemModel.sem,
+                  ticketItemModel.sem.toString(),
                   textAlign: TextAlign.end,
                   style: Theme.of(context).textTheme.bodyMedium,
                 )),
@@ -78,7 +78,7 @@ class TicketListItemWithCheckbox extends StatelessWidget {
             Expanded(
               flex: 2,
               child: Text(
-                ticketItemModel.slNo,
+                ticketItemModel.slNo.toString(),
                 textAlign: TextAlign.start,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
@@ -86,14 +86,14 @@ class TicketListItemWithCheckbox extends StatelessWidget {
             Expanded(
                 flex: 3,
                 child: Text(
-                  ticketItemModel.ticketNo,
+                  ticketItemModel.ticketNo.toString(),
                   textAlign: TextAlign.start,
                   style: Theme.of(context).textTheme.bodyMedium,
                 )),
             Expanded(
                 flex: 2,
                 child: Text(
-                  ticketItemModel.sem,
+                  ticketItemModel.sem.toString(),
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyMedium,
                 )),
