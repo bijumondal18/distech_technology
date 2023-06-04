@@ -23,6 +23,32 @@ class _DashboardScreenState extends State<DashboardScreen> {
   final TextEditingController _searchController = TextEditingController();
   bool isSelected = false;
 
+  List<TicketItemModel> searchedList = [];
+
+  // Filter List by SEM or Search list by SEM
+  void filterSearch(String query) {
+    setState(() {
+      searchedList = ticketItemList
+          .where((element) => element.ticketNo!
+              .toLowerCase()
+              .toString()
+              .contains(query.toLowerCase().toString()))
+          .toList();
+    });
+  }
+
+  @override
+  void initState() {
+    searchedList = ticketItemList;
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -61,7 +87,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         color: AppColors.primary,
                         size: 20,
                       ),
-                      onChanged: (String? value) {},
+                      onChanged: (String? value) {
+                        filterSearch(value!);
+                      },
                       maxLines: 1,
                       minLines: 1,
                       isBorder: false,
@@ -209,11 +237,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 child: ListView.builder(
                                     padding: EdgeInsets.zero,
                                     physics: const BouncingScrollPhysics(),
-                                    itemCount: ticketItemList.length,
+                                    itemCount: searchedList.length,
                                     itemBuilder: ((context, index) {
                                       return TicketListItemWithCheckbox(
-                                          ticketItemModel:
-                                              ticketItemList[index],
+                                          ticketItemModel: searchedList[index],
                                           itemIndex: index);
                                     })),
                               ))

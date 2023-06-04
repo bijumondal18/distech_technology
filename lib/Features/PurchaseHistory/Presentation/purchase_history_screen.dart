@@ -56,6 +56,12 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
   }
 
   @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
