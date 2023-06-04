@@ -16,7 +16,6 @@ class FilterDialog extends StatefulWidget {
 }
 
 class _FilterDialogState extends State<FilterDialog> {
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -84,9 +83,7 @@ class _FilterDialogState extends State<FilterDialog> {
                 ),
                 InkWell(
                     onTap: () {
-                      setState(() {
-
-                      });
+                      setState(() {});
                     },
                     child: Text(
                       'Clear',
@@ -119,11 +116,11 @@ class _FilterDialogState extends State<FilterDialog> {
                   return CustomChip(
                     onTap: () {
                       setState(() {
-                        semList[index].isSelected = !semList[index].isSelected;
+                        semList[index].isSelected = !semList[index].isSelected!;
                       });
                     },
                     isSelected: semList[index].isSelected,
-                    label: semList[index].label,
+                    label: semList[index].label.toString(),
                   );
                 },
               ),

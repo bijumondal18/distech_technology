@@ -25,7 +25,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   List<TicketItemModel> searchedList = [];
 
-  // Filter List by SEM or Search list by SEM
+  // Filter List by TICKET NUMBER or Search list by SEM
   void filterSearch(String query) {
     setState(() {
       searchedList = ticketItemList
@@ -33,6 +33,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
               .toLowerCase()
               .toString()
               .contains(query.toLowerCase().toString()))
+          .toList();
+    });
+  }
+
+  // Filter List by SEM or Search list by SEM
+  void filterSearchBySem(String query) {
+    setState(() {
+      searchedList = ticketItemList
+          .where((element) =>
+              element.sem.toString().contains(query.toLowerCase().toString()))
           .toList();
     });
   }
@@ -228,21 +238,32 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           ),
                           const CustomDivider(),
                           Container(
+                              alignment: Alignment.center,
                               constraints: BoxConstraints(
                                 maxHeight:
                                     MediaQuery.of(context).size.height * 0.28,
                               ),
                               width: MediaQuery.of(context).size.width,
                               child: Scrollbar(
-                                child: ListView.builder(
-                                    padding: EdgeInsets.zero,
-                                    physics: const BouncingScrollPhysics(),
-                                    itemCount: searchedList.length,
-                                    itemBuilder: ((context, index) {
-                                      return TicketListItemWithCheckbox(
-                                          ticketItemModel: searchedList[index],
-                                          itemIndex: index);
-                                    })),
+                                child: searchedList.isNotEmpty
+                                    ? ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        physics: const BouncingScrollPhysics(),
+                                        itemCount: searchedList.length,
+                                        itemBuilder: ((context, index) {
+                                          return TicketListItemWithCheckbox(
+                                              ticketItemModel:
+                                                  searchedList[index],
+                                              itemIndex: index);
+                                        }))
+                                    : Text(
+                                        'No Ticket Found!',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge!
+                                            .copyWith(
+                                                fontWeight: FontWeight.w400),
+                                      ),
                               ))
                         ],
                       ),
