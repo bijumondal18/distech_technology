@@ -7,6 +7,7 @@ import '../../../Commons/app_icons.dart';
 import '../../../Commons/app_sizes.dart';
 import '../../../Widgets/custom_divider.dart';
 import '../../../Widgets/custom_text_field.dart';
+import '../../../Widgets/filter_dialog.dart';
 import '../../SoldTicket/Models/ticket_item_model.dart';
 import '../../SoldTicket/Widgets/ticket_list_item.dart';
 
@@ -107,18 +108,29 @@ class _ReturnUnsoldTicketState extends State<ReturnUnsoldTicket> {
                   ),
                   Expanded(
                     flex: 1,
-                    child: Container(
-                      padding:
-                          const EdgeInsets.all(AppSizes.kDefaultPadding / 1.5),
-                      height: AppSizes.buttonHeight + 4,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                              AppSizes.cardCornerRadius / 2),
-                          border: Border.all(color: AppColors.bg)),
-                      child: Image.asset(
-                        AppIcons.filterIcon,
-                        width: 25,
-                        height: 25,
+                    child: InkWell(
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return const AlertDialog(
+                                content: FilterDialog(),
+                              );
+                            });
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(
+                            AppSizes.kDefaultPadding / 1.5),
+                        height: AppSizes.buttonHeight + 4,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                                AppSizes.cardCornerRadius / 2),
+                            border: Border.all(color: AppColors.bg)),
+                        child: Image.asset(
+                          AppIcons.filterIcon,
+                          width: 25,
+                          height: 25,
+                        ),
                       ),
                     ),
                   )

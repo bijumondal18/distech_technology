@@ -11,5 +11,6 @@ class AppIcons {
   static const String calenderIcon = '${path}calender-icon.png';
   static const String filterIcon = '${path}filter-icon.png';
   static const String editIcon = '${path}edit-icon.png';
+  static const String closeIcon = '${path}close-icon.png';
 
 }

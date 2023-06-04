@@ -92,165 +92,212 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  // Hardware Back Button Pressed on Android Devices to Close the Application.
+  Future<bool> _onBackPressed() async {
+    return await showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(
+              'Close Application?',
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineMedium!
+                  .copyWith(fontWeight: FontWeight.w500),
+            ),
+            content: Text(
+              'Are you sure you want to close the application?',
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyLarge!
+                  .copyWith(fontWeight: FontWeight.w400),
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(false);
+                  },
+                  child: Text(
+                    'Cancel',
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .copyWith(color: AppColors.darkGrey.withOpacity(0.8)),
+                  )),
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(true);
+                  },
+                  child: Text('Confirm',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyLarge!
+                          .copyWith(color: AppColors.primary))),
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _key,
-      appBar: CustomAppBar(
-        autoImplyLeading: false,
-        leadingIcon: EvaIcons.menu2Outline,
-        leadingIconPressed: () => _key.currentState!.openDrawer(),
-        actions: [
-          GestureDetector(
-            onTap: () => context.push(const ProfileScreen()),
-            child: const Padding(
-              padding: EdgeInsets.only(right: AppSizes.kDefaultPadding),
-              child: CircleAvatar(
-                radius: 16,
-                backgroundColor: AppColors.white,
-                foregroundImage: NetworkImage(
-                  'https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=2000',
+    return WillPopScope(
+      onWillPop: _onBackPressed,
+      child: Scaffold(
+        key: _key,
+        appBar: CustomAppBar(
+          autoImplyLeading: false,
+          leadingIcon: EvaIcons.menu2Outline,
+          leadingIconPressed: () => _key.currentState!.openDrawer(),
+          actions: [
+            GestureDetector(
+              onTap: () => context.push(const ProfileScreen()),
+              child: const Padding(
+                padding: EdgeInsets.only(right: AppSizes.kDefaultPadding),
+                child: CircleAvatar(
+                  radius: 16,
+                  backgroundColor: AppColors.white,
+                  foregroundImage: NetworkImage(
+                    'https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=2000',
+                  ),
                 ),
               ),
-            ),
-          )
-        ],
-      ),
-      drawer: Drawer(
-        backgroundColor: AppColors.white,
-        child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                  width: 100,
-                  height: 100,
-                  padding: const EdgeInsets.only(
-                      top: AppSizes.kDefaultPadding / 3,
-                      left: AppSizes.kDefaultPadding / 3,
-                      bottom: AppSizes.kDefaultPadding * 2,
-                      right: AppSizes.kDefaultPadding * 2),
-                  margin: const EdgeInsets.only(
-                      top: AppSizes.kDefaultPadding,
-                      left: AppSizes.kDefaultPadding),
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage(
-                            AppImages.drawerLogoBg,
-                          ))),
-                  child: Image.asset(
-                    AppImages.drawerLogo,
-                    width: 30,
-                    fit: BoxFit.contain,
-                    height: 30,
-                  )),
-              const SizedBox(
-                height: AppSizes.kDefaultPadding,
-              ),
-              Expanded(
-                child: ListView.builder(
-                    itemCount: drawerItemsList.length,
-                    shrinkWrap: false,
-                    itemBuilder: (context, index) {
-                      return InkWell(
-                        onTap: () {
-                          for (var i = 0; i < isHighlighted.length; i++) {
-                            if (index == i) {
-                              isHighlighted[index] = true;
-                            } else {
-                              isHighlighted[i] = false;
+            )
+          ],
+        ),
+        drawer: Drawer(
+          backgroundColor: AppColors.white,
+          child: SafeArea(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                    width: 100,
+                    height: 100,
+                    padding: const EdgeInsets.only(
+                        top: AppSizes.kDefaultPadding / 3,
+                        left: AppSizes.kDefaultPadding / 3,
+                        bottom: AppSizes.kDefaultPadding * 2,
+                        right: AppSizes.kDefaultPadding * 2),
+                    margin: const EdgeInsets.only(
+                        top: AppSizes.kDefaultPadding,
+                        left: AppSizes.kDefaultPadding),
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage(
+                              AppImages.drawerLogoBg,
+                            ))),
+                    child: Image.asset(
+                      AppImages.drawerLogo,
+                      width: 30,
+                      fit: BoxFit.contain,
+                      height: 30,
+                    )),
+                const SizedBox(
+                  height: AppSizes.kDefaultPadding,
+                ),
+                Expanded(
+                  child: ListView.builder(
+                      itemCount: drawerItemsList.length,
+                      shrinkWrap: false,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () {
+                            for (var i = 0; i < isHighlighted.length; i++) {
+                              if (index == i) {
+                                isHighlighted[index] = true;
+                              } else {
+                                isHighlighted[i] = false;
+                              }
                             }
-                          }
-                          // Close the Drawer first
-                          closeDrawer();
-                          // Then Navigate to the Screens or Containers
-                          navigate(index);
-                        },
-                        child: DrawerItem(
-                          drawerItemModel: drawerItemsList[index],
-                          bgColor: isHighlighted[index]
-                              ? AppColors.primary.withOpacity(0.2)
-                              : AppColors.transparent,
-                        ),
-                      );
-                    }),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(AppSizes.kDefaultPadding),
-                child: FullButton(
-                  label: 'Logout',
-                  onPressed: () {},
-                  bgColor: AppColors.secondary,
+                            // Close the Drawer first
+                            closeDrawer();
+                            // Then Navigate to the Screens or Containers
+                            navigate(index);
+                          },
+                          child: DrawerItem(
+                            drawerItemModel: drawerItemsList[index],
+                            bgColor: isHighlighted[index]
+                                ? AppColors.primary.withOpacity(0.2)
+                                : AppColors.transparent,
+                          ),
+                        );
+                      }),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(AppSizes.kDefaultPadding),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                        child: Text('Developed By Excellis',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(
-                                  color: AppColors.darkGrey.withOpacity(0.7),
-                                ))),
-                    Text(
-                      'App V0.1.1',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .copyWith(color: AppColors.darkGrey.withOpacity(0.7)),
-                    )
-                  ],
+                Padding(
+                  padding: const EdgeInsets.all(AppSizes.kDefaultPadding),
+                  child: FullButton(
+                    label: 'Logout',
+                    onPressed: () {},
+                    bgColor: AppColors.secondary,
+                  ),
                 ),
-              )
-            ],
+                Padding(
+                  padding: const EdgeInsets.all(AppSizes.kDefaultPadding),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                          child: Text('Developed By Excellis',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .copyWith(
+                                    color: AppColors.darkGrey.withOpacity(0.7),
+                                  ))),
+                      Text(
+                        'App V0.1.1',
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: AppColors.darkGrey.withOpacity(0.7)),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
-      ),
-      body: Column(
-        children: [
-          Stack(
-            children: [
-              ClipPath(
-                clipper: CustomShape(),
-                child: Container(
-                  height: 150,
-                  alignment: Alignment.center,
-                  width: MediaQuery.of(context).size.width,
-                  color: AppColors.primaryDark,
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Text(
-                      'Hi, Shuvra Paul',
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineMedium!
-                          .copyWith(
-                              color: AppColors.white,
-                              fontWeight: FontWeight.w500),
-                    ),
+        body: Column(
+          children: [
+            Stack(
+              children: [
+                ClipPath(
+                  clipper: CustomShape(),
+                  child: Container(
+                    height: 150,
+                    alignment: Alignment.center,
+                    width: MediaQuery.of(context).size.width,
+                    color: AppColors.primaryDark,
                   ),
-                ],
-              ),
-              const Positioned(
-                bottom: 0,
-                left: AppSizes.kDefaultPadding,
-                right: AppSizes.kDefaultPadding,
-                child: TimerCardWidget(),
-              )
-            ],
-          ),
-          Expanded(child: screens[selectedIndex])
-        ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Hi, Shuvra Paul',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(
+                                color: AppColors.white,
+                                fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ],
+                ),
+                const Positioned(
+                  bottom: 0,
+                  left: AppSizes.kDefaultPadding,
+                  right: AppSizes.kDefaultPadding,
+                  child: TimerCardWidget(),
+                )
+              ],
+            ),
+            Expanded(child: screens[selectedIndex])
+          ],
+        ),
       ),
     );
   }

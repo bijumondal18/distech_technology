@@ -1,3 +1,4 @@
+import 'package:distech_technology/Widgets/filter_dialog.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
   //Variable Declarations
   final TextEditingController _searchController = TextEditingController();
   bool isSelected = false;
-
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +61,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         color: AppColors.primary,
                         size: 20,
                       ),
-                      onChanged: (String? value){
-
-                      },
+                      onChanged: (String? value) {},
                       maxLines: 1,
                       minLines: 1,
                       isBorder: false,
@@ -74,18 +72,29 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                   Expanded(
                     flex: 1,
-                    child: Container(
-                      padding:
-                          const EdgeInsets.all(AppSizes.kDefaultPadding / 1.5),
-                      height: AppSizes.buttonHeight + 4,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                              AppSizes.cardCornerRadius / 2),
-                          border: Border.all(color: AppColors.bg)),
-                      child: Image.asset(
-                        AppIcons.filterIcon,
-                        width: 25,
-                        height: 25,
+                    child: InkWell(
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return const AlertDialog(
+                                content: FilterDialog(),
+                              );
+                            });
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(
+                            AppSizes.kDefaultPadding / 1.5),
+                        height: AppSizes.buttonHeight + 4,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                                AppSizes.cardCornerRadius / 2),
+                            border: Border.all(color: AppColors.bg)),
+                        child: Image.asset(
+                          AppIcons.filterIcon,
+                          width: 25,
+                          height: 25,
+                        ),
                       ),
                     ),
                   )
@@ -196,11 +205,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                     MediaQuery.of(context).size.height * 0.28,
                               ),
                               width: MediaQuery.of(context).size.width,
-                              child: RawScrollbar(
-                                thumbColor: AppColors.primary,
-                                thickness: 3,
-                                radius: const Radius.circular(
-                                    AppSizes.cardCornerRadius),
+                              child: Scrollbar(
                                 child: ListView.builder(
                                     padding: EdgeInsets.zero,
                                     physics: const BouncingScrollPhysics(),

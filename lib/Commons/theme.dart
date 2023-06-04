@@ -15,8 +15,15 @@ class AppTheme {
       primaryColor: AppColors.primary,
       hintColor: AppColors.darkGrey,
       unselectedWidgetColor: AppColors.grey,
+      // Scrollbar Theme
+      scrollbarTheme: ScrollbarThemeData(
+        thumbColor: MaterialStateProperty.all<Color>(AppColors.primary),
+        thickness: MaterialStateProperty.all<double>(3),
+        radius: const Radius.circular(AppSizes.cardCornerRadius),
+      ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
           elevation: 5, backgroundColor: AppColors.primary),
+      // AppBar Theme
       appBarTheme: const AppBarTheme(
           iconTheme: IconThemeData(
             size: 24,
@@ -32,8 +39,10 @@ class AppTheme {
             //    fontFamily: FontFamily.poppinsRegular
           ),
           foregroundColor: AppColors.black),
+      // Progress Bar Theme
       progressIndicatorTheme: const ProgressIndicatorThemeData(
           color: AppColors.lightGrey, circularTrackColor: AppColors.bg),
+      // CheckBox Theme
       checkboxTheme: CheckboxThemeData(
           side: const BorderSide(width: 1, color: AppColors.grey),
           // To Make checkbox rounded or circle
@@ -42,6 +51,7 @@ class AppTheme {
                   BorderRadius.circular(AppSizes.cardCornerRadius / 2))),
       scaffoldBackgroundColor: AppColors.scaffold,
       visualDensity: VisualDensity.adaptivePlatformDensity,
+      // Tab Bar Theme
       tabBarTheme: const TabBarTheme(
         labelStyle: TextStyle(fontWeight: FontWeight.w600),
         labelColor: AppColors.white,
@@ -50,6 +60,7 @@ class AppTheme {
         indicator: UnderlineTabIndicator(
             borderSide: BorderSide(color: AppColors.primary)),
       ),
+      // Text Theme
       textTheme: const TextTheme(
         headline1: TextStyle(
             color: AppColors.black,
