@@ -58,6 +58,11 @@ class CustomTextField extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyMedium,
               )
             : const SizedBox(),
+        labelText != ''
+            ? const SizedBox(
+                height: AppSizes.kDefaultPadding / 2,
+              )
+            : const SizedBox(),
         TextFormField(
             autovalidateMode: AutovalidateMode.onUserInteraction,
             readOnly: readOnly ?? false,

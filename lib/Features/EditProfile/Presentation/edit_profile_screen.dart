@@ -18,6 +18,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   //Variable Declarations
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _aadhaarIdController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
+  final TextEditingController _pinCodeController = TextEditingController();
+  final TextEditingController _mobileNumberController = TextEditingController();
+  final TextEditingController _emailIdController = TextEditingController();
+  final TextEditingController _tradeLicencesController =
+      TextEditingController();
+  final TextEditingController _gstNumberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +51,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   left: 0,
                   right: 0,
                   child: CircleAvatar(
-                    radius: 50,
-                    backgroundColor: AppColors.darkGrey,
+                    radius: 60,
+                    backgroundColor: AppColors.bg,
+                    foregroundImage: NetworkImage(
+                        'https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=2000'),
                   ))
             ],
           ),
@@ -61,6 +71,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   hintText: 'Shuvra',
                   labelText: 'First Name',
                   isBorder: false,
+                  keyboardType: TextInputType.name,
                   maxLines: 1,
                   minLines: 1,
                 ),
@@ -70,6 +81,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 CustomTextField(
                   controller: _lastNameController,
                   hintText: 'Paul',
+                  keyboardType: TextInputType.name,
                   labelText: 'Last Name',
                   isBorder: false,
                   maxLines: 1,
@@ -79,9 +91,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   height: AppSizes.kDefaultPadding,
                 ),
                 CustomTextField(
-                  controller: _lastNameController,
+                  controller: _aadhaarIdController,
                   hintText: '0000 0000 0000',
                   labelText: 'Aadhaar ID',
+                  keyboardType: TextInputType.number,
                   isBorder: false,
                   maxLines: 1,
                   minLines: 1,
@@ -90,10 +103,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   height: AppSizes.kDefaultPadding,
                 ),
                 CustomTextField(
-                  controller: _lastNameController,
+                  controller: _addressController,
                   hintText: 'ABCD Nagar, Block-A, Uttarayan, Bidhannagar ',
                   labelText: 'Address',
                   isBorder: false,
+                  keyboardType: TextInputType.streetAddress,
                   maxLines: 1,
                   minLines: 1,
                 ),
@@ -101,10 +115,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   height: AppSizes.kDefaultPadding,
                 ),
                 CustomTextField(
-                  controller: _lastNameController,
+                  controller: _pinCodeController,
                   hintText: '743437',
                   labelText: 'PIN Code',
                   isBorder: false,
+                  keyboardType: TextInputType.number,
                   maxLines: 1,
                   minLines: 1,
                 ),
@@ -126,10 +141,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   height: AppSizes.kDefaultPadding,
                 ),
                 CustomTextField(
-                  controller: _lastNameController,
+                  controller: _mobileNumberController,
                   hintText: '6535653542',
                   labelText: 'Mobile Number',
+                  keyboardType: TextInputType.number,
                   isBorder: false,
+                  maxLength: 10,
                   maxLines: 1,
                   minLines: 1,
                 ),
@@ -137,9 +154,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   height: AppSizes.kDefaultPadding,
                 ),
                 CustomTextField(
-                  controller: _lastNameController,
+                  controller: _emailIdController,
                   hintText: 'user@gmail.com',
                   labelText: 'Email ID',
+                  keyboardType: TextInputType.emailAddress,
                   isBorder: false,
                   maxLines: 1,
                   minLines: 1,
@@ -148,10 +166,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   height: AppSizes.kDefaultPadding,
                 ),
                 CustomTextField(
-                  controller: _lastNameController,
+                  controller: _tradeLicencesController,
                   hintText: '123456789',
                   labelText: 'Trade License Number',
                   isBorder: false,
+                  keyboardType: TextInputType.text,
                   maxLines: 1,
                   minLines: 1,
                 ),
@@ -159,12 +178,18 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   height: AppSizes.kDefaultPadding,
                 ),
                 CustomTextField(
-                  controller: _lastNameController,
+                  controller: _gstNumberController,
                   hintText: '16365253454',
+                  keyboardType: TextInputType.text,
                   labelText: 'GST Number',
                   isBorder: false,
                   maxLines: 1,
                   minLines: 1,
+                ),
+                const SafeArea(
+                  child: SizedBox(
+                    height: AppSizes.kDefaultPadding,
+                  ),
                 ),
               ],
             ),
