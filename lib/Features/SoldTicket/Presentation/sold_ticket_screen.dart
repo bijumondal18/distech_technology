@@ -149,28 +149,30 @@ class _SoldTicketScreenState extends State<SoldTicketScreen> {
                         ),
                       ),
                       const CustomDivider(),
-                      Container(
-                          constraints: BoxConstraints(
-                            maxHeight:
-                                MediaQuery.of(context).size.height * 0.45,
-                          ),
-                          width: MediaQuery.of(context).size.width,
-                          // height: MediaQuery.of(context).size.height * 0.45,
-                          child: RawScrollbar(
-                            thumbColor: AppColors.primary,
-                            thickness: 3,
-                            radius: const Radius.circular(
-                                AppSizes.cardCornerRadius),
-                            child: ListView.builder(
-                                padding: EdgeInsets.zero,
-                                physics: const BouncingScrollPhysics(),
-                                itemCount: ticketItemList.length,
-                                itemBuilder: ((context, index) {
-                                  return TicketListItem(
-                                      ticketItemModel: ticketItemList[index],
-                                      itemIndex: index);
-                                })),
-                          ))
+                      SafeArea(
+                        child: Container(
+                            constraints: BoxConstraints(
+                              maxHeight:
+                                  MediaQuery.of(context).size.height * 0.45,
+                            ),
+                            width: MediaQuery.of(context).size.width,
+                            // height: MediaQuery.of(context).size.height * 0.45,
+                            child: RawScrollbar(
+                              thumbColor: AppColors.primary,
+                              thickness: 3,
+                              radius: const Radius.circular(
+                                  AppSizes.cardCornerRadius),
+                              child: ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  physics: const BouncingScrollPhysics(),
+                                  itemCount: ticketItemList.length,
+                                  itemBuilder: ((context, index) {
+                                    return TicketListItem(
+                                        ticketItemModel: ticketItemList[index],
+                                        itemIndex: index);
+                                  })),
+                            )),
+                      )
                     ],
                   ),
                 ),

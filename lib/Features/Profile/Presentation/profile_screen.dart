@@ -5,7 +5,6 @@ import 'package:distech_technology/Features/Profile/Widgets/profile_item_widget.
 import 'package:distech_technology/Utils/app_helper.dart';
 import 'package:distech_technology/Widgets/custom_app_bar.dart';
 import 'package:distech_technology/Widgets/custom_divider.dart';
-import 'package:distech_technology/Widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
 import '../../../Commons/app_colors.dart';
@@ -112,7 +111,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           onPressed: () {
             context.push(const EditProfileScreen());
           }),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      //floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

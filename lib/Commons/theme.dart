@@ -15,6 +15,21 @@ class AppTheme {
       primaryColor: AppColors.primary,
       hintColor: AppColors.darkGrey,
       unselectedWidgetColor: AppColors.grey,
+      inputDecorationTheme: InputDecorationTheme(
+          enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: AppColors.bg, width: 1.0)),
+          errorBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  color: AppColors.secondary.withOpacity(0.6), width: 1.0)),
+          border: const OutlineInputBorder(
+              borderSide: BorderSide(
+                  color: AppColors.bg, width: 1.0)),
+          focusedErrorBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  color: AppColors.secondary.withOpacity(0.6), width: 1.0)),
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  color: AppColors.primary.withOpacity(0.4), width: 1.0))),
       // Scrollbar Theme
       scrollbarTheme: ScrollbarThemeData(
         thumbColor: MaterialStateProperty.all<Color>(AppColors.primary),

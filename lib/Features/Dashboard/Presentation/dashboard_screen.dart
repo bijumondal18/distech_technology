@@ -30,9 +30,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
     setState(() {
       searchedList = ticketItemList
           .where((element) => element.ticketNo!
+              .trim()
               .toLowerCase()
               .toString()
-              .contains(query.toLowerCase().toString()))
+              .contains(query.trim().toLowerCase().toString()))
           .toList();
     });
   }
@@ -269,26 +270,28 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ),
                     ),
                   ),
-                  Column(
-                    children: [
-                      const SizedBox(
-                        height: AppSizes.kDefaultPadding * 1.2,
-                      ),
-                      FullButton(
-                        label: 'Mark sold',
-                        onPressed: () {},
-                      ),
-                      const SizedBox(
-                        height: AppSizes.kDefaultPadding * 1.2,
-                      ),
-                      Text(
-                        "** Once you mark as a sold it can't be modified later",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium!
-                            .copyWith(color: AppColors.secondary),
-                      )
-                    ],
+                  SafeArea(
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: AppSizes.kDefaultPadding * 1.2,
+                        ),
+                        FullButton(
+                          label: 'Mark sold',
+                          onPressed: () {},
+                        ),
+                        const SizedBox(
+                          height: AppSizes.kDefaultPadding * 1.2,
+                        ),
+                        Text(
+                          "** Once you mark as a sold it can't be modified later",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .copyWith(color: AppColors.secondary),
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),

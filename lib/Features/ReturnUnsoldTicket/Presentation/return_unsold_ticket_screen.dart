@@ -46,12 +46,13 @@ class _ReturnUnsoldTicketState extends State<ReturnUnsoldTicket> {
                       BorderRadius.circular(AppSizes.cardCornerRadius / 2),
                 ),
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Expanded(
                       flex: 6,
                       child: Padding(
-                        padding:
-                            const EdgeInsets.all(AppSizes.kDefaultPadding / 2),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: AppSizes.kDefaultPadding / 2),
                         child: Text(
                           'Sell 5% of your unsold tickets from the total purchase',
                           style: Theme.of(context)
@@ -248,24 +249,26 @@ class _ReturnUnsoldTicketState extends State<ReturnUnsoldTicket> {
                       ),
                     ),
                   ),
-                  Column(
-                    children: [
-                      const SizedBox(
-                        height: AppSizes.kDefaultPadding * 1.2,
-                      ),
-                      FullButton(
-                        label: 'Return Unsold',
-                        onPressed: () {},
-                        bgColor: AppColors.secondary,
-                      ),
-                      const SizedBox(
-                        height: AppSizes.kDefaultPadding * 1.2,
-                      ),
-                      Text(
-                        '** You can unsold your 5% ticket of your total purchased ticket',
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      )
-                    ],
+                  SafeArea(
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: AppSizes.kDefaultPadding * 1.2,
+                        ),
+                        FullButton(
+                          label: 'Return Unsold',
+                          onPressed: () {},
+                          bgColor: AppColors.secondary,
+                        ),
+                        const SizedBox(
+                          height: AppSizes.kDefaultPadding * 1.2,
+                        ),
+                        Text(
+                          '** You can unsold your 5% ticket of your total purchased ticket',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),

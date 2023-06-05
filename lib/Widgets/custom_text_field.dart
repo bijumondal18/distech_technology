@@ -58,15 +58,7 @@ class CustomTextField extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyMedium,
               )
             : const SizedBox(),
-        Container(
-          margin: labelText != ''
-              ? const EdgeInsets.only(top: AppSizes.kDefaultPadding / 2)
-              : EdgeInsets.zero,
-          decoration: BoxDecoration(
-              borderRadius:
-                  BorderRadius.circular(AppSizes.cardCornerRadius / 1.5),
-              border: Border.all(color: AppColors.bg)),
-          child: TextFormField(
+        TextFormField(
             autovalidateMode: AutovalidateMode.onUserInteraction,
             readOnly: readOnly ?? false,
             validator: validator,
@@ -83,36 +75,35 @@ class CustomTextField extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                 fontSize: textSize ?? 16.0, fontWeight: FontWeight.w400),
             textAlign: textAlign!,
-            decoration: isBorder!
-                ? InputDecoration(
+            decoration:
+                //isBorder! ?
+                InputDecoration(
                     suffixIcon: suffixIcon,
                     prefixIcon: prefixIcon,
                     counterText: '',
                     contentPadding:
                         const EdgeInsets.all(AppSizes.kDefaultPadding),
-                    enabledBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(color: AppColors.lightGrey),
-                    ),
-                    focusedBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(color: AppColors.lightGrey),
-                    ),
                     hintText: hintText!,
                     hintStyle: Theme.of(context).textTheme.bodyMedium,
+                    errorStyle: Theme.of(context)
+                        .textTheme
+                        .bodyMedium!
+                        .copyWith(color: AppColors.secondary),
+                    errorMaxLines: 2,
                     labelStyle: Theme.of(context).textTheme.bodyLarge,
                     errorText: controller.text == "" ? errorText : null)
-                : InputDecoration(
-                    suffixIcon: suffixIcon,
-                    prefixIcon: prefixIcon,
-                    border: InputBorder.none,
-                    counterText: '',
-                    contentPadding:
-                        const EdgeInsets.all(AppSizes.kDefaultPadding),
-                    hintText: hintText!,
-                    hintStyle: Theme.of(context).textTheme.bodyMedium,
-                    labelStyle: Theme.of(context).textTheme.bodyLarge,
-                    errorText: controller.text == "" ? errorText : null),
-          ),
-        ),
+            // : InputDecoration(
+            //     suffixIcon: suffixIcon,
+            //     prefixIcon: prefixIcon,
+            //     border: InputBorder.none,
+            //     counterText: '',
+            //     contentPadding:
+            //         const EdgeInsets.all(AppSizes.kDefaultPadding),
+            //     hintText: hintText!,
+            //     hintStyle: Theme.of(context).textTheme.bodyMedium,
+            //     labelStyle: Theme.of(context).textTheme.bodyLarge,
+            //     errorText: controller.text == "" ? errorText : null),
+            ),
       ],
     );
   }

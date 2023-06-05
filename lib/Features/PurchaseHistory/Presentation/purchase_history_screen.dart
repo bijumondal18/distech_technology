@@ -202,27 +202,29 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                         ),
                       ),
                       const CustomDivider(),
-                      Container(
-                          constraints: BoxConstraints(
-                            maxHeight: MediaQuery.of(context).size.height * 0.4,
-                          ),
-                          width: MediaQuery.of(context).size.width,
-                          child: RawScrollbar(
-                            thumbColor: AppColors.primary,
-                            thickness: 3,
-                            radius: const Radius.circular(
-                                AppSizes.cardCornerRadius),
-                            child: ListView.builder(
-                                padding: EdgeInsets.zero,
-                                physics: const BouncingScrollPhysics(),
-                                shrinkWrap: true,
-                                itemCount: searchedList.length,
-                                itemBuilder: ((context, index) {
-                                  return TicketListItem(
-                                      ticketItemModel: searchedList[index],
-                                      itemIndex: index);
-                                })),
-                          ))
+                      SafeArea(
+                        child: Container(
+                            constraints: BoxConstraints(
+                              maxHeight: MediaQuery.of(context).size.height * 0.4,
+                            ),
+                            width: MediaQuery.of(context).size.width,
+                            child: RawScrollbar(
+                              thumbColor: AppColors.primary,
+                              thickness: 3,
+                              radius: const Radius.circular(
+                                  AppSizes.cardCornerRadius),
+                              child: ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  physics: const BouncingScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount: searchedList.length,
+                                  itemBuilder: ((context, index) {
+                                    return TicketListItem(
+                                        ticketItemModel: searchedList[index],
+                                        itemIndex: index);
+                                  })),
+                            )),
+                      )
                     ],
                   ),
                 ),
