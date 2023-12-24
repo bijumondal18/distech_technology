@@ -2,10 +2,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const primary = Color(0xFF1F6AFD);
+  static const primary = Color(0xFF1F96AB);
   static const primaryBg = Color(0xFFF2F4FF);
-  static const primaryDark = Color(0xFF0042C2);
-  static const secondary = Color(0xFFF34001);
+  static const primaryDark = Color(0xFF029480);
+  static const secondary = Color(0xFFD7613B);
   static const white = Color(0xFFFFFFFF);
   static const scaffold = Color(0xFFFFFFFF);
   static const black = Color(0xFF000000);

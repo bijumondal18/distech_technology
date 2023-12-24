@@ -156,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   radius: 16,
                   backgroundColor: AppColors.white,
                   foregroundImage: NetworkImage(
-                    'https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=2000',
+                    'https://cdn3d.iconscout.com/3d/premium/thumb/man-avatar-8183369-6546914.png',
                   ),
                 ),
               ),
@@ -184,14 +184,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         image: DecorationImage(
                             fit: BoxFit.cover,
                             image: AssetImage(
-                              AppImages.drawerLogoBg,
+                              AppImages.appLogo,
                             ))),
-                    child: Image.asset(
-                      AppImages.drawerLogo,
-                      width: 30,
-                      fit: BoxFit.contain,
-                      height: 30,
-                    )),
+                    // child: Image.asset(
+                    //   AppImages.drawerLogo,
+                    //   width: 30,
+                    //   fit: BoxFit.contain,
+                    //   height: 30,
+                    // )
+                ),
                 const SizedBox(
                   height: AppSizes.kDefaultPadding,
                 ),
@@ -237,7 +238,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
-                          child: Text('Developed By Excellis',
+                          child: Text('Developed By Biju',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium!
@@ -245,7 +246,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     color: AppColors.darkGrey.withOpacity(0.7),
                                   ))),
                       Text(
-                        'App V0.1.1',
+                        'App V1.0.1',
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             color: AppColors.darkGrey.withOpacity(0.7)),
                       )

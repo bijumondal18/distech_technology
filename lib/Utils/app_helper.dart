@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -65,21 +66,25 @@ extension DateHelper on DateTime {
 
 extension CustomNavigator on BuildContext {
   Future<dynamic> push(Widget page) async {
-    Navigator.push(this, MaterialPageRoute(builder: (_) => page));
+    Navigator.push(this, CupertinoPageRoute(
+        fullscreenDialog: false,
+        builder: (_) => page));
   }
 
   //clear current navigation stack
   Future<dynamic> pushReplacement(Widget page) async {
-    Navigator.pushReplacement(this, MaterialPageRoute(builder: (_) => page));
+    Navigator.pushReplacement(this, CupertinoPageRoute(
+        fullscreenDialog: false,
+        builder: (_) => page));
   }
 
   //clear all the navigation history stack
   Future<dynamic> pushAndRemoveUntil(Widget page) async {
     Navigator.pushAndRemoveUntil(
         this,
-        MaterialPageRoute(
-          builder: (_) => page,
-        ),
+        CupertinoPageRoute(
+            fullscreenDialog: false,
+            builder: (_) => page),
         (route) => false);
   }
 

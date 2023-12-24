@@ -36,7 +36,7 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                     Image.asset(
                       AppImages.appLogo,
-                      width: MediaQuery.of(context).size.width * 0.6,
+                      width: MediaQuery.of(context).size.width * 0.4,
                     ),
                     const SizedBox(
                       height: AppSizes.kDefaultPadding * 3,

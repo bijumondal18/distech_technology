@@ -46,9 +46,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   right: 0,
                   child: CircleAvatar(
                     radius: 60,
-                    backgroundColor: AppColors.darkGrey,
-                    foregroundImage: NetworkImage(
-                        'https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=2000'),
+                    child: CircleAvatar(
+                      radius: 60,
+                      backgroundColor: AppColors.white,
+                      foregroundImage: NetworkImage(
+                          'https://cdn3d.iconscout.com/3d/premium/thumb/man-avatar-8183369-6546914.png'),
+                    ),
                   ))
             ],
           ),
@@ -61,16 +64,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   horizontal: AppSizes.kDefaultPadding),
               child: ListView(
                 children: [
-                  const ProfileItemWidget(title: 'First Name', value: 'Shuvra'),
-                  const ProfileItemWidget(title: 'Last Name', value: 'Paul'),
+                  const ProfileItemWidget(title: 'First Name', value: 'Biju'),
+                  const ProfileItemWidget(title: 'Last Name', value: 'Mondal'),
                   const ProfileItemWidget(
                       title: 'Aadhaar ID', value: '0000 0000 0000'),
                   const ProfileItemWidget(
-                      title: 'Pan Number', value: 'DAZKK2103N'),
+                      title: 'Pan Number', value: 'BCFED2542L'),
                   const ProfileItemWidget(
                       title: 'Address 1',
-                      value: 'ABCD Nagar, Block-A, Uttarayan, Bidhannagar'),
-                  const ProfileItemWidget(title: 'PIN Code', value: '743437'),
+                      value: ' 3120 Fincham Road, Tupelo, Mississippi, United States, 38803'),
+                  const ProfileItemWidget(title: 'ZIP Code', value: '38803'),
                   const SizedBox(
                     height: AppSizes.kDefaultPadding,
                   ),
@@ -89,11 +92,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     height: AppSizes.kDefaultPadding,
                   ),
                   const ProfileItemWidget(
-                      title: 'Mobile Number', value: '6454356425'),
+                      title: 'Mobile Number', value: '760-503-7095'),
                   const ProfileItemWidget(
-                      title: 'Email ID', value: 'user@gmail.com'),
+                      title: 'Email ID', value: 'mb.technologies@gmail.com'),
                   const ProfileItemWidget(
-                      title: 'Trade License Number', value: '123456789'),
+                      title: 'Trade License Number', value: '875412512'),
                   const ProfileItemWidget(
                       title: 'GST Number', value: 'AGDF124563DG'),
                 ],
